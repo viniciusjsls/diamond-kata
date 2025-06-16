@@ -5,6 +5,8 @@ namespace DiamondKata.Tests;
 
 public class DiamondKataTests
 {
+    private const int MAX_LETTER_COUNT = 2;
+
     [Fact]
     public void GivenInputCharLowerThanA_ThenThrowException()
     {
@@ -103,8 +105,21 @@ public class DiamondKataTests
     public void GivenInputCharBetweenBAndZ_ThenEachLineShouldHaveTwoEqualLettersInAscendingOrder()
     {
         // Arrange
+        char inputChar = 'C';
+        int inputLength = inputChar - 'B';
+
         // Act
-        // Assert
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print(inputChar));
+
+        for (int lineIndex = 1; lineIndex <= inputLength; lineIndex++)
+        {
+            var diamondLine = diamondLines.ElementAt(lineIndex).Replace("_", string.Empty);
+
+            // Assert
+            diamondLine.Should().HaveLength(MAX_LETTER_COUNT, "Each line should have two letters");
+            diamondLine.First().Should().Be(diamondLine.Last(), "Each line should have two equal letters");
+            diamondLine.First().Should().Be((char)('A' + lineIndex), "Should sort ascending");
+        }
     }
 
     [Fact]
