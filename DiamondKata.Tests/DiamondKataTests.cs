@@ -47,8 +47,8 @@ public class DiamondKataTests
     public static IEnumerable<object[]> ValidInputsAndExpectedResult()
     {
         // Arrange
-        //yield return new object[] { 'A', new List<string> { "A" } };
-        //yield return new object[] { 'B', new List<string> { "_A_", "B_B", "_A_" } };
+        yield return new object[] { 'A', new List<string> { "A" } };
+        yield return new object[] { 'B', new List<string> { "_A_", "B_B", "_A_" } };
         yield return new object[] { 'C', new List<string> { "__A__", "_B_B_", "C___C", "_B_B_", "__A__" } };
     }
 
@@ -145,7 +145,7 @@ public class DiamondKataTests
         {
             var diamondLine = diamondLines.ElementAt(lineIndex);
 
-        // Assert
+            // Assert
             // The amount of space to shape a diagonal, input length has to be reduced by the lineIndex as it increases
             int spacesToReachInputLetter = inputLength - lineIndex;
             // remaining length represents the amount of characters left after the space used to shape diagonal is removed
@@ -156,6 +156,7 @@ public class DiamondKataTests
     }
 
     [Fact]
+    ///The reversed list should be equal to the original, so all the checks done in previous tests ensure it has a diamond shape
     public void GivenValidInput_ThenDiamondStringTopHalfEqualBottomHalf()
     {
         // Act

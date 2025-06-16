@@ -10,10 +10,24 @@ namespace DiamondKata.Console
     {
         public static string Print(char selectedChar)
         {
-            List<string> result = new List<string> { "_ _ A _ _", "_ B _ B _", "C _ _ _ C", "_ B _ B _", "_ _ A _ _" };
-            //List<string> result = new List<string> { "A" };
+            Validate(selectedChar);
 
-            return string.Join("\n", result);
+            int selectedCharIndex = selectedChar - 'A';
+            List<string> result = [];
+
+            for (var currIndex = 0; currIndex <= selectedCharIndex; currIndex++)
+            {
+                char currChar = (char)(currIndex + 'A');
+
+                string outerDiamond = new string('_', selectedCharIndex - currIndex);
+                string innerDiamond = currIndex > 0 ? new string('_', currIndex + currIndex - 1) + currChar : string.Empty;
+
+                string line = $"{outerDiamond}{currChar}{innerDiamond}{outerDiamond}";
+
+                result.Add(string.Join(' ', line.ToCharArray()));
+            }
+
+            return string.Join("\n", result.Concat(result.AsEnumerable().Reverse().Skip(1)));
         }
 
         public static void Validate(char input)
