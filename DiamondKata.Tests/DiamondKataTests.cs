@@ -135,8 +135,24 @@ public class DiamondKataTests
     public void GivenValidInput_ThenSpaceBeforeAndAfterLettersShouldMatchDiamondShape()
     {
         // Arrange
+        char inputChar = 'C';
+        int inputLength = inputChar - 'A';
+
         // Act
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print(inputChar));
+
+        for (int lineIndex = 0; lineIndex <= inputLength; lineIndex++)
+        {
+            var diamondLine = diamondLines.ElementAt(lineIndex);
+
         // Assert
+            // The amount of space to shape a diagonal, input length has to be reduced by the lineIndex as it increases
+            int spacesToReachInputLetter = inputLength - lineIndex;
+            // remaining length represents the amount of characters left after the space used to shape diagonal is removed
+            int remainingStringLength = diamondLine.Length - spacesToReachInputLetter;
+            diamondLine.TrimStart('_').Should().HaveLength(remainingStringLength);
+            diamondLine.TrimEnd('_').Should().HaveLength(remainingStringLength);
+        }
     }
 
     [Fact]
