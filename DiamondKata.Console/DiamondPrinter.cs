@@ -10,8 +10,8 @@ namespace DiamondKata.Console
     {
         public static string Print(char selectedChar)
         {
-            //List<string> result = new List<string> { "_ _ A _ _", "_ B _ B _", "C _ _ _ C", "_ B _ B _", "_ _ A _ _" };
-            List<string> result = new List<string> { "A" };
+            List<string> result = new List<string> { "_ _ A _ _", "_ B _ B _", "C _ _ _ C", "_ B _ B _", "_ _ A _ _" };
+            //List<string> result = new List<string> { "A" };
 
             return string.Join("\n", result);
         }

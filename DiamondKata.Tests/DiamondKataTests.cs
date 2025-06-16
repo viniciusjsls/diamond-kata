@@ -78,9 +78,13 @@ public class DiamondKataTests
     [Fact]
     public void GivenValidInputChar_ThenFirstLineShouldAlwaysHaveOneLetter()
     {
-        // Arrange
         // Act
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print('C'));
+
+        var diamondFirstLine = diamondLines.First();
+
         // Assert
+        diamondFirstLine.Trim('_').Should().HaveLength(1).And.Be("A", "It always begins with A");
     }
 
     [Fact]
