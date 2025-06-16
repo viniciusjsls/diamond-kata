@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondKata.Console", "DiamondKata.Console\DiamondKata.Console.csproj", "{A6F468FA-1CF5-4C70-AB1A-BF38E9E9B096}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondKata.Console", "DiamondKata.Console\DiamondKata.Console.csproj", "{A6F468FA-1CF5-4C70-AB1A-BF38E9E9B096}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondKata.Tests", "DiamondKata.Tests\DiamondKata.Tests.csproj", "{C44691AF-232D-44E7-BF61-2BCC7F0A262A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A6F468FA-1CF5-4C70-AB1A-BF38E9E9B096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6F468FA-1CF5-4C70-AB1A-BF38E9E9B096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6F468FA-1CF5-4C70-AB1A-BF38E9E9B096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C44691AF-232D-44E7-BF61-2BCC7F0A262A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C44691AF-232D-44E7-BF61-2BCC7F0A262A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C44691AF-232D-44E7-BF61-2BCC7F0A262A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C44691AF-232D-44E7-BF61-2BCC7F0A262A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
