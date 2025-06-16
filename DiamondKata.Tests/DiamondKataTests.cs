@@ -68,9 +68,11 @@ public class DiamondKataTests
     [Fact]
     public void GivenInputCharIsA_ThenReturnA()
     {
-        // Arrange
         // Act
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print('A'));
+
         // Assert
+        diamondLines.Should().HaveCount(1).And.Contain("A");
     }
 
     [Fact]
