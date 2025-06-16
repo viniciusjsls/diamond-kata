@@ -90,9 +90,13 @@ public class DiamondKataTests
     [Fact]
     public void GivenInputCharBetweenBAndZ_ThenFirstAndLastItemsShouldBeEqual()
     {
-        // Arrange
-        // Act
-        // Assert
+        for (int inputIndex = 'B'; inputIndex <= 'Z'; inputIndex++)
+        {
+            var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print((char)inputIndex));
+
+            // Assert
+            diamondLines.Should().HaveCountGreaterThan(1).And.StartWith(diamondLines.LastOrDefault());
+        }
     }
 
     [Fact]
