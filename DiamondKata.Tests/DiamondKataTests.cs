@@ -5,14 +5,6 @@ namespace DiamondKata.Tests;
 
 public class DiamondKataTests
 {
-    public static IEnumerable<object[]> ValidInputsAndExpectedResult()
-    {
-        // Arrange
-        yield return new object[] { 'A', new List<string> { "A" } };
-        yield return new object[] { 'B', new List<string> { "_A_", "B_B", "_A_" } };
-        yield return new object[] { 'C', new List<string> { "__A__", "_B_B_", "C___C", "_B_B_", "__A__" } };
-    }
-
     [Fact]
     public void GivenInputCharLowerThanA_ThenThrowException()
     {
@@ -48,13 +40,29 @@ public class DiamondKataTests
         }
     }
 
+    public static IEnumerable<object[]> ValidInputsAndExpectedResult()
+    {
+        // Arrange
+        //yield return new object[] { 'A', new List<string> { "A" } };
+        //yield return new object[] { 'B', new List<string> { "_A_", "B_B", "_A_" } };
+        yield return new object[] { 'C', new List<string> { "__A__", "_B_B_", "C___C", "_B_B_", "__A__" } };
+    }
+
+    private IEnumerable<string> TrimAndSplitDiamondString(string diamond)
+    {
+        return diamond.Replace(" ", string.Empty).Split("\n");
+    }
+
     [Theory]
     [MemberData(nameof(ValidInputsAndExpectedResult))]
     public void GivenValidInput_ThenShouldMatchExactlyString(char inputChar, IEnumerable<string> expectedResult)
     {
-        // Arrange
         // Act
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print(inputChar));
+
         // Assert
+        expectedResult.Should().HaveSameCount(diamondLines);
+        expectedResult.SequenceEqual(diamondLines).Should().BeTrue("It should match template in order and value");
     }
 
     [Fact]
