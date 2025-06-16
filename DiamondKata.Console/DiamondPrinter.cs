@@ -10,7 +10,8 @@ namespace DiamondKata.Console
     {
         public static void Validate(char input)
         {
-
+            if (input < 'A' || input > 'Z')
+                throw new ArgumentException("Input should be between A-Z");
         }
     }
 }
