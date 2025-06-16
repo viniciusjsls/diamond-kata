@@ -5,6 +5,14 @@ namespace DiamondKata.Tests;
 
 public class DiamondKataTests
 {
+    public static IEnumerable<object[]> ValidInputsAndExpectedResult()
+    {
+        // Arrange
+        yield return new object[] { 'A', new List<string> { "A" } };
+        yield return new object[] { 'B', new List<string> { "_A_", "B_B", "_A_" } };
+        yield return new object[] { 'C', new List<string> { "__A__", "_B_B_", "C___C", "_B_B_", "__A__" } };
+    }
+
     [Fact]
     public void GivenInputCharLowerThanA_ThenThrowException()
     {
@@ -38,5 +46,62 @@ public class DiamondKataTests
             // Assert
             validateAction.Should().NotThrow<ArgumentException>("A to Z are valid inputs");
         }
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidInputsAndExpectedResult))]
+    public void GivenValidInput_ThenShouldMatchExactlyString(char inputChar, IEnumerable<string> expectedResult)
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenInputCharIsA_ThenReturnA()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenValidInputChar_ThenFirstLineShouldAlwaysHaveOneLetter()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenInputCharBetweenBAndZ_ThenFirstAndLastItemsShouldBeEqual()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenInputCharBetweenBAndZ_ThenEachLineShouldHaveTwoEqualLettersInAscendingOrder()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenInputCharBetweenBAndZ_ThenSpaceBetweenLettersShouldMatchDiamondShape()
+    {
+        // Arrange
+        // Act
+        // Assert
+    }
+
+    [Fact]
+    public void GivenValidInput_ThenSpaceBeforeAndAfterLettersShouldMatchDiamondShape()
+    {
+        // Arrange
+        // Act
+        // Assert
     }
 }
