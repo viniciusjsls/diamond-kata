@@ -1,3 +1,6 @@
+using DiamondKata.Console;
+using FluentAssertions;
+
 namespace DiamondKata.Tests;
 
 public class DiamondKataTests
@@ -5,17 +8,23 @@ public class DiamondKataTests
     [Fact]
     public void GivenInputCharLowerThanA_ThenThrowException()
     {
-        // Arrange
-        // Act
+        //Arrange
+        // A index is 65, so any char below it should fail
+        Action validateAction = () => DiamondPrinter.Validate((char)64);
+
         // Assert
+        validateAction.Should().ThrowExactly<ArgumentException>("Inputs different than A to Z are out of scope");
     }
 
     [Fact]
     public void GivenInputCharBiggerThanA_ThenThrowException()
     {
-        // Arrange
-        // Act
+        //Arrange
+        // Z index is 90, so any char above it should fail
+        Action validateAction = () => DiamondPrinter.Validate((char)91);
+
         // Assert
+        validateAction.Should().ThrowExactly<ArgumentException>("Inputs different than A to Z are out of scope");
     }
 
     [Fact]
