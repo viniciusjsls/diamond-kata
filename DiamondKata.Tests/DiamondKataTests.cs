@@ -30,8 +30,13 @@ public class DiamondKataTests
     [Fact]
     public void GivenInputCharBetweenAAndZ_ThenNoException()
     {
-        // Arrange
-        // Act
-        // Assert
+        for (int inputIndex = 'A'; inputIndex <= 'Z'; inputIndex++)
+        {
+            //Arrange
+            Action validateAction = () => DiamondPrinter.Validate((char)inputIndex);
+
+            // Assert
+            validateAction.Should().NotThrow<ArgumentException>("A to Z are valid inputs");
+        }
     }
 }
