@@ -90,18 +90,6 @@ public class DiamondKataTests
     }
 
     [Fact]
-    public void GivenInputCharBetweenBAndZ_ThenFirstAndLastItemsShouldBeEqual()
-    {
-        for (int inputIndex = 'B'; inputIndex <= 'Z'; inputIndex++)
-        {
-            var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print((char)inputIndex));
-
-            // Assert
-            diamondLines.Should().HaveCountGreaterThan(1).And.StartWith(diamondLines.LastOrDefault());
-        }
-    }
-
-    [Fact]
     public void GivenInputCharBetweenBAndZ_ThenEachLineShouldHaveTwoEqualLettersInAscendingOrder()
     {
         // Arrange
@@ -136,5 +124,15 @@ public class DiamondKataTests
         // Arrange
         // Act
         // Assert
+    }
+
+    [Fact]
+    public void GivenValidInput_ThenDiamondStringTopHalfEqualBottomHalf()
+    {
+        // Act
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print('C'));
+
+        // Assert
+        diamondLines.SequenceEqual(diamondLines.Reverse()).Should().BeTrue();
     }
 }
