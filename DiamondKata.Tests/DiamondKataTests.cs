@@ -1,10 +1,12 @@
 using DiamondKata.Console;
 using FluentAssertions;
+using System.Text.RegularExpressions;
 
 namespace DiamondKata.Tests;
 
 public class DiamondKataTests
 {
+    private readonly Regex _containsRegex = new("[A-Z]_*[A-Z]");
     private const int MAX_LETTER_COUNT = 2;
 
     [Fact]
@@ -114,8 +116,19 @@ public class DiamondKataTests
     public void GivenInputCharBetweenBAndZ_ThenSpaceBetweenLettersShouldMatchDiamondShape()
     {
         // Arrange
+        char inputChar = 'C';
+        int inputLength = inputChar - 'B';
+
         // Act
-        // Assert
+        var diamondLines = TrimAndSplitDiamondString(DiamondPrinter.Print(inputChar));
+
+        for (int lineIndex = 1; lineIndex <= inputLength; lineIndex++)
+        {
+            var diamondLine = _containsRegex.Match(diamondLines.ElementAt(lineIndex).Replace("_", string.Empty)).Value;
+
+            // Assert
+            diamondLine.Count(x => x == '_').Should().Be(diamondLine.Length - MAX_LETTER_COUNT, "Underscore count should match string length minus maximum allowed letters");
+        }
     }
 
     [Fact]
