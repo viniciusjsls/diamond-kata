@@ -1,2 +1,10 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using DiamondKata.Console;
+
+Console.WriteLine("Input A-Z char");
+
+var inputKey = Console.ReadKey();
+
+var diamondString = DiamondPrinter.Print(inputKey.KeyChar);
+
+Console.WriteLine();
+Console.WriteLine(diamondString);
